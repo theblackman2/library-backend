@@ -2,6 +2,7 @@ const express = require("express");
 const booksRouter = require("./routes/books.js");
 const commentsRouter = require("./routes/comments.js");
 const cors = require("cors");
+const authorsRouter = require("./routes/authors.js");
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,8 @@ app.get("/", (req, res) => {
 app.use("/books", booksRouter);
 
 app.use("/comments", commentsRouter);
+
+app.use("/authors", authorsRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
