@@ -11,4 +11,15 @@ booksRouter.get("/", (req, res) => {
   );
 });
 
+booksRouter.get("/:id", (req, res) => {
+  const id = req.params.id;
+  mysqlConnexion.query(
+    `SELECT * FROM all_books WHERE id=${id}`,
+    (err, rows) => {
+      if (err) throw err;
+      res.send(rows);
+    }
+  );
+});
+
 module.exports = booksRouter;
