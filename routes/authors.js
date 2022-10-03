@@ -8,6 +8,13 @@ authorsRouter.get("/", (req, res) => {
   });
 });
 
+authorsRouter.get("/news", (req, res) => {
+  mysqlConnexion.query("SELECT * FROM Author LIMIT 10", (err, rows) => {
+    if (err) throw err;
+    res.send(rows);
+  });
+});
+
 authorsRouter.get("/:id", (req, res) => {
   const id = req.params.id;
 

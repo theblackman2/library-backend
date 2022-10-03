@@ -11,6 +11,16 @@ booksRouter.get("/", (req, res) => {
   );
 });
 
+booksRouter.get("/recents", (req, res) => {
+  mysqlConnexion.query(
+    "SELECT * FROM all_books ORDER BY title LIMIT 10",
+    (err, rows) => {
+      if (err) throw err;
+      res.send(rows);
+    }
+  );
+});
+
 booksRouter.get("/:id", (req, res) => {
   const id = req.params.id;
   mysqlConnexion.query(
