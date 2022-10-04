@@ -4,6 +4,7 @@ const commentsRouter = require("./routes/comments.js");
 const cors = require("cors");
 const authorsRouter = require("./routes/authors.js");
 const publishersRouter = require("./routes/publishers.js");
+const authRouter = require("./routes/auth.js");
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,8 @@ app.use("/comments", commentsRouter);
 app.use("/authors", authorsRouter);
 
 app.use("/publishers", publishersRouter);
+
+app.use("/auth", authRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
